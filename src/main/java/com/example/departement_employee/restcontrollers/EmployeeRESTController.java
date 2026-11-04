@@ -45,4 +45,8 @@ import java.util.List;
         public List<Employee> getEmployeesByDepartementId(@PathVariable("idDep") Long idDep) {
             return employeeService.findByDepartementIdDepartement(idDep);
         }
+        @GetMapping("/employeesByName/{nom}")
+        public List<Employee> findByNomCompletContains(@PathVariable("nom") String nom) {
+            return employeeService.findByNomCompletContains(nom);
+        }
 }

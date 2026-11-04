@@ -6,6 +6,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
+import com.example.departement_employee.entities.Departement;
 
 @SpringBootApplication
 public class DepartementEmployeeApplication implements CommandLineRunner {
@@ -17,8 +18,9 @@ public class DepartementEmployeeApplication implements CommandLineRunner {
         SpringApplication.run(DepartementEmployeeApplication.class, args);
     }
 
+
     @Override
     public void run(String... args) throws Exception {
-        repositoryRestConfiguration.exposeIdsFor(Employee.class);
+        repositoryRestConfiguration.exposeIdsFor(Employee.class, Departement.class);
     }
 }

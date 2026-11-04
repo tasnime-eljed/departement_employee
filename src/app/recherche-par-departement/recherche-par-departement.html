@@ -1,0 +1,44 @@
+<div class="container mt-4">
+
+  <div class="col-sm-4 mb-4">
+    <label for="idDep" class="form-label">Départements</label>
+    <select id="idDep" class="form-select form-select-lg"
+            [ngModel]="idDepartement"
+            (ngModelChange)="onChange($event)">
+      <option [ngValue]="null" disabled>-- Choisir un département --</option>
+      @for (dep of departements; track dep.idDepartement) {
+        <option [ngValue]="dep.idDepartement">{{ dep.nomDepartement }}</option>
+      }
+    </select>
+  </div>
+
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Id</th><th>Nom complet</th><th>Salaire</th>
+            <th>Date d'embauche</th><th>Département</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (employee of employees; track employee.idEmployee) {
+            <tr>
+              <td>{{ employee.idEmployee }}</td>
+              <td>{{ employee.nomComplet }}</td>
+              <td>{{ employee.salaire }}</td>
+              <td>{{ employee.dateEmbauche | date:'dd/MM/yyyy' }}</td>
+              @if (employee.departement) {
+                <td>{{ employee.departement.nomDepartement }}</td>
+              } @else {
+                <td>PAS DE DÉPARTEMENT</td>
+              }
+            </tr>
+          } @empty {
+            <tr><td colspan="5">Aucun employé à afficher.</td></tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

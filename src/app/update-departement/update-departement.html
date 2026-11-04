@@ -1,0 +1,32 @@
+<form>
+
+  <!-- ID : caché en mode ajout, visible en mode modification -->
+  <div class="mb-3" [hidden]="ajout">
+    <label class="form-label">ID Département</label>
+    <input type="text" [(ngModel)]="departement.idDepartement"
+           name="idDepartement" class="form-control w-25" readonly>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Nom département</label>
+    <input type="text" [(ngModel)]="departement.nomDepartement"
+           name="nomDepartement" class="form-control"
+           placeholder="Entrez un nom de département...">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Description</label>
+    <input type="text" [(ngModel)]="departement.descriptionDepartement"
+           name="descriptionDepartement" class="form-control"
+           placeholder="Entrez une description...">
+  </div>
+
+  <div class="mt-2">
+    <button type="submit" class="btn btn-success"
+            [disabled]="!departement.nomDepartement"
+            (click)="saveDepartement()">
+      {{ ajout ? 'Ajouter' : 'Modifier' }}
+    </button>
+  </div>
+
+</form>

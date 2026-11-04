@@ -1,0 +1,83 @@
+
+<div class="container mt-4">
+  <h2>Modifier un employé</h2>
+
+  <form (ngSubmit)="updateEmployee()" #employeeForm="ngForm">
+
+    <div  class="mb-3">
+      <label for="idEmployee" class="form-label">Identifiant</label>
+      <input readonly
+        id="idEmployee"
+        type="number"
+        class="form-control"
+        [ngModel]="currentEmployee.idEmployee"
+        name="idEmployee"
+        >
+    </div>
+
+    <div class="mb-3">
+      <label for="nomComplet" class="form-label">Nom complet</label>
+      <input
+        id="nomComplet"
+        type="text"
+        class="form-control"
+        [(ngModel)]="currentEmployee.nomComplet"
+        name="nomComplet"
+        required>
+    </div>
+
+    <div class="mb-3">
+      <label for="salaire" class="form-label">Salaire</label>
+      <input
+        id="salaire"
+        type="number"
+        class="form-control"
+        [(ngModel)]="currentEmployee.salaire"
+        name="salaire"
+        required
+        min="0">
+    </div>
+
+    <div class="mb-3">
+      <label for="dateEmbauche" class="form-label">
+        Date d'embauche
+      </label>
+      <input
+        id="dateEmbauche"
+        type="date"
+        class="form-control"
+        [ngModel]="currentEmployee.dateEmbauche | date:'yyyy-MM-dd'"
+        (ngModelChange)="onDateChange($event)"
+        name="dateEmbauche"
+        required>
+        </div>
+        <div class="mb-3">
+      <label for="idDepartement" class="form-label">Département</label>
+      <select
+        id="idDepartement"
+        name="idDepartement"
+        class="form-select"
+        [(ngModel)]="updatedDepId"
+        required>
+        @for (dep of departements; track dep.idDepartement) {
+          <option [ngValue]="dep.idDepartement">{{ dep.nomDepartement }}</option>
+        }
+      </select>
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-success"
+      [disabled]="employeeForm.invalid">
+      Enregistrer
+    </button>
+
+    <button
+      type="button"
+      class="btn btn-secondary ms-2"
+      routerLink="/employees">
+      Annuler
+    </button>
+
+  </form>
+</div>

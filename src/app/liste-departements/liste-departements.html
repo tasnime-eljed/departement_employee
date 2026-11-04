@@ -1,0 +1,43 @@
+<div class="container mt-4">
+  <div class="card shadow mb-4">
+    <div class="card-body">
+     <div class="col-sm-6 mb-4">
+        <app-update-departement
+        [departement]="updatedDep"
+        (departementUpdated)="departementUpdated($event)"
+         [ajout]="ajout">
+        </app-update-departement>
+        @if (!ajout) {
+            <button type="button" class="btn btn-secondary mb-3" (click)="annuler()">Annuler</button>
+         }
+    </div>
+      <h3 class="mb-3">Gestion des départements</h3>
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Description</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (dep of departements; track dep.idDepartement) {
+            <tr>
+              <td>{{ dep.idDepartement }}</td>
+              <td>{{ dep.nomDepartement }}</td>
+              <td>{{ dep.descriptionDepartement }}</td>
+              <td>
+                 <a class="btn btn-success" (click)="updateDep(dep)">Editer</a>
+              </td>
+            </tr>
+          } @empty {
+            <tr><td colspan="4">Aucun département.</td></tr>
+          }
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>

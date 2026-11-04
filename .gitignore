@@ -1,4 +1,7 @@
-# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+
+# ==============================
+# Angular
+# ==============================
 
 # Compiled output
 /dist
@@ -11,7 +14,28 @@
 npm-debug.log
 yarn-error.log
 
+# Angular cache
+/.angular/cache
+
+# Tests and coverage
+/coverage
+testem.log
+/typings
+
+# ==============================
+# Spring Boot / Maven
+# ==============================
+
+HELP.md
+target/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# ==============================
 # IDEs and editors
+# ==============================
+
 .idea/
 .project
 .classpath
@@ -19,6 +43,26 @@ yarn-error.log
 *.launch
 .settings/
 *.sublime-workspace
+
+# IntelliJ IDEA
+*.iws
+*.iml
+*.ipr
+
+# STS / Eclipse
+.apt_generated
+.factorypath
+.springBeans
+.sts4-cache
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
 
 # Visual Studio Code
 .vscode/*
@@ -29,13 +73,9 @@ yarn-error.log
 .history/*
 
 # Miscellaneous
-/.angular/cache
 .sass-cache/
 /connect.lock
-/coverage
 /libpeerconnection.log
-testem.log
-/typings
 
 # System files
 .DS_Store
